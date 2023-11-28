@@ -1,5 +1,5 @@
 import react from 'react';
-import Dashboard from '../src/dashboard/pages/Dashboard';
+import Dashboard from './pages/Dashboard/Dashboard';
 
 export default function App() {
 
