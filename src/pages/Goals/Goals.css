@@ -1,0 +1,30 @@
+
+.Goals-Box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+/* Goals.css */
+
+.Goals-Box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 18%;
+    margin: 0 auto; /* Center the box horizontally */
+    background-color: #DABEF5;  
+    border-radius: 10px;
+}
+
+.Goals-Box-Items{
+    display: flex;
+    flex-direction: column;
+}
+  
+.Goals-Box-Items-Icons{
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+  

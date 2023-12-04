@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import Dashboard from './pages/Reports/Reports';
+import Dashboard from './pages/Goals/Goals';
 import Login from './pages/Login/Login';
-import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
 const PrivateRoute = ({ element }) => {
