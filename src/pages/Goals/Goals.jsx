@@ -6,6 +6,7 @@ import { FaTrash, FaPencilAlt } from 'react-icons/fa';
 import './Goals.css';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import SideBar from '../../components/SideBar/SideBar';
 //importing libraries
 
 export default function Goals() {
@@ -25,12 +26,40 @@ export default function Goals() {
   const { id: goalId } = useParams();
   console.log(goalId)
   //intializing useStates
+
+  const isDuplicateGoalName = (nameToCheck) => {
+    return goalData.some((goal) => goal.name === nameToCheck);
+  };
+
+  const isEndDateBeforeStartDate = () => {
+    const startDateObj = new Date(startDate);
+    const endDateObj = new Date(endDate);
+  
+    return endDateObj < startDateObj;
+  };
+
+  const resetFormFields = () => {
+    setName('');
+    setTarget(0);
+    setStartDate('');
+    setEndDate('');
+    setType('');
+  };
+
   
   //posting goal
   const addGoal = async (e) => {
     e.preventDefault();
     try {
-      console.log('State Values:', { name, target, startDate, endDate, type });
+      // Check for duplicate goal name
+      if (isDuplicateGoalName(name)) {
+        alert( 'Duplicate goal name');
+        return;
+      }
+      if (isEndDateBeforeStartDate()) {
+        alert('Error: End date cannot be before start date');
+        return;
+      }
   
       const authToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwMTU1ODAwOCwiZXhwIjoxNzA0MTUwMDA4fQ.sGRHYaRreOUSbAuyGHqBcZUcbt1Su1Ogxv6PooQ0tnc';
   
@@ -53,13 +82,8 @@ export default function Goals() {
       if (response.status === 200) {
         // Assuming response.data contains the newly added goal
         setGoalData((prevGoals) => [...prevGoals, response.data]);
-        setName('');
-        setTarget(0);
-        setStartDate('');
-        setEndDate('');
-        setType('');
+        resetFormFields();
         handleShowSuccessModal();
-
       }
     } catch (error) {
       console.error(error);
@@ -68,57 +92,58 @@ export default function Goals() {
     //posting goal
 
   //updating goal
-  const updateGoal = async (e) => {
-    e.preventDefault();
-  
-    try {
-      if (!goalToUpdate) {
-        console.error('Error: Goal ID is not defined.');
-        return;
-      }
-  
-      console.log('State Values:', { name, target, startDate, endDate, type });
-  
-      const authToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwMTU1ODAwOCwiZXhwIjoxNzA0MTUwMDA4fQ.sGRHYaRreOUSbAuyGHqBcZUcbt1Su1Ogxv6PooQ0tnc';
-  
-      const response = await axios.patch(
-        `http://localhost:4000/api/goals/goal/${goalToUpdate}`,
-        {
-          name,
-          target: parseInt(target),
-          startDate,
-          endDate,
-          type,
-        },
-        {
-          headers: {
-            'Authorization': `Bearer ${authToken}`,
-          },
-        }
-      );
-  
-      if (response.status === 200) {
-        // Assuming response.data contains the updated goal
-        const updatedGoal = response.data;
-  
-        // Update the existing goal in the array
-        setGoalData((prevGoals) =>
-          prevGoals.map((goal) =>
-            goal.id === updatedGoal.id ? updatedGoal : goal
-          )
-        );
-  
-        setName('');
-        setTarget(0);
-        setStartDate('');
-        setEndDate('');
-        setType('');
-        handleCloseUpdateForm();
-      }
-    } catch (error) {
-      console.error(error);
+  // Function to handle the update of an existing goal
+const updateGoal = async (e) => {
+  e.preventDefault();
+
+  try {
+    // Check for duplicate goal name
+    if (isDuplicateGoalName(name) && name !== goalToUpdate.name) {
+      alert('Duplicate goal name');
+      return;
     }
-  };
+    if (isEndDateBeforeStartDate()) {
+      alert('Error: End date cannot be before start date');
+      return;
+    }
+
+    const authToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwMTU1ODAwOCwiZXhwIjoxNzA0MTUwMDA4fQ.sGRHYaRreOUSbAuyGHqBcZUcbt1Su1Ogxv6PooQ0tnc';
+
+    const response = await axios.patch(
+      `http://localhost:4000/api/goals/goal/${goalToUpdate}`,
+      {
+        name,
+        target: parseInt(target),
+        startDate,
+        endDate,
+        type,
+      },
+      {
+        headers: {
+          'Authorization': `Bearer ${authToken}`,
+        },
+      }
+    );
+
+    if (response.status === 200) {
+      // Assuming response.data contains the updated goal
+      const updatedGoal = response.data;
+
+      // Update the existing goal in the array
+      setGoalData((prevGoals) =>
+        prevGoals.map((goal) =>
+          goal.id === updatedGoal.id ? updatedGoal : goal
+        )
+      );
+
+      resetFormFields();
+      handleCloseUpdateForm();
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
   
   
 //setting the vlue when the user presses on the pen in order to update the goal
@@ -190,7 +215,7 @@ export default function Goals() {
 
   //setting boolean values for showing the modal
   const handleShowModal = () => setShowModal(true);
-  const handleCloseModal = () => setShowModal(false);
+  const handleCloseModal = () =>{ setShowModal(false); resetFormFields()};
   const handleShowSuccessModal = () => setShowSuccessModal(true);
   const handleCloseSuccessModal = () => setShowSuccessModal(false);
   const handleShowUpdateForm = () => setShowUpdateForm(true);
@@ -220,6 +245,7 @@ export default function Goals() {
 
   return (
     <div>
+      <SideBar />
       <div className="Add-Goal-modal">
         <Button variant="primary" onClick={handleShowModal}>
           Add Goal
@@ -252,28 +278,28 @@ export default function Goals() {
     <form onSubmit={addGoal}>
       <div className="form-group">
         <label htmlFor="goalName">Goal Name:</label>
-        <input type="text" className="form-control" id="goalName"
+        <input type="text" className="form-control" id="goalName" required
          placeholder="Enter goal name" value={name} onChange={(e) => setName(e.target.value)} />
       </div>
       <div className="form-group">
         <label htmlFor="target">Target:</label>
-        <input type="number" className="form-control" 
+        <input type="number" className="form-control" required
         id="target" placeholder="Enter target" value={target} onChange={(e) => setTarget(e.target.value)} />
       </div>
       <div className="form-group">
         <label htmlFor="startDate">Start Date:</label>
-        <input type="date" className="form-control" id="startDate" value={startDate}
+        <input type="date" className="form-control" id="startDate" value={startDate} required
         onChange={(e) => setStartDate(e.target.value)} />
       </div>
       <div className="form-group">
         <label htmlFor="endDate">End Date:</label>
-        <input type="date" className="form-control" id="endDate"value={endDate}
+        <input type="date" className="form-control" id="endDate"value={endDate} required
         onChange={(e) => setEndDate(e.target.value)} />
       </div>
       <div className="form-group">
         <label htmlFor="type">Type:</label>
-         <select className="form-control" id="type"
-        value={type} onChange={(e) => setType(e.target.value)} placeholder='Choose Type'>
+         <select className="form-control" id="type"required
+        value={type} onChange={(e) => setType(e.target.value)} placeholder='Choose Type'> 
           <option value="" disabled>Select Type</option>
           <option value="weekly">Weekly</option>
           <option value="monthly">Monthly</option>
@@ -342,22 +368,22 @@ export default function Goals() {
           <form onSubmit={updateGoal}>
           <div className="form-group">
         <label htmlFor="goalName">Goal Name:</label>
-        <input type="text" className="form-control" id="goalName"
+        <input type="text" className="form-control" id="goalName" required
          placeholder="Enter goal name" value={name} onChange={(e) => setName(e.target.value)} />
       </div>
       <div className="form-group">
         <label htmlFor="target">Target:</label>
-        <input type="number" className="form-control" 
+        <input type="number" className="form-control" required
         id="target" placeholder="Enter target" value={target} onChange={(e) => setTarget(e.target.value)} />
       </div>
       <div className="form-group">
         <label htmlFor="startDate">Start Date:</label>
-        <input type="date" className="form-control" id="startDate" value={startDate}
+        <input type="date" className="form-control" id="startDate" value={startDate} required
         onChange={(e) => setStartDate(e.target.value)} />
       </div>
       <div className="form-group">
         <label htmlFor="endDate">End Date:</label>
-        <input type="date" className="form-control" id="endDate"value={endDate}
+        <input type="date" className="form-control" id="endDate"value={endDate} required
         onChange={(e) => setEndDate(e.target.value)} />
       </div>
       <div className="form-group">

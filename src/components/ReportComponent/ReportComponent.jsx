@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './ReportComponent.css';
 import axios from 'axios';
 import { Line } from 'react-chartjs-2';
 
