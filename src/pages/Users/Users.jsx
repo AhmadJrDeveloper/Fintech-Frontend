@@ -253,36 +253,34 @@ const addUser = async (e) => {
 
   return (
     <div className='user-container'>
-      <div className='User'>
+    <div className="User">
         <span className='user-title'>Users</span>
-        <button type='submit' className='User-Add-button' onClick={handleShowModal}>
-          Add New User
-        </button>
-        <div className='User-form'>
-          <div>&nbsp;</div>
-          <table>
-            <thead>
-              <tr className='title'>
+        <button type='submit' className="User-Add-button">Add New User</button>
+    <div className="User-form">
+        <div>&nbsp;</div>
+    <table className='user-table'>
+        <thead>
+            <tr className='title'>
                 <th></th>
                 <th>Name</th>
                 <th>Role</th>
                 <th>&nbsp;&nbsp;</th>
                 <th></th>
-              </tr>
-            </thead>
+            </tr>
+        </thead>
             <tbody>
               {userData.map((user) => (
                 <tr key={user.id}>
                   <td>
-                    <img src={profile} alt='' />
+                    <img className='user-img' src={profile} alt='' />
                   </td>
                   <td>{user.username}</td>
                   <td>{user.role.name}</td>
                   <td>
-                    <img src={Delete} alt='' onClick={() => handleDeleteClick(user.id)} />
+                    <img  className='user-img' src={Delete} alt='' onClick={() => handleDeleteClick(user.id)} />
                   </td>
                   <td>
-                    <img src={edit} alt='' onClick={() => handleUpdateClick(user.id)} />
+                    <img className='user-img' src={edit} alt='' onClick={() => handleUpdateClick(user.id)} />
                   </td>
                 </tr>
               ))}
@@ -290,8 +288,8 @@ const addUser = async (e) => {
           </table>
         </div>
         <div className='user-skip'>
-          <img className='prev' src={prev} alt='' /> &nbsp;1 of 5 &nbsp;
-          <img src={next} alt='' />
+          <img className='user-img' src={prev} alt='' /> &nbsp;1 of 5 &nbsp;
+          <img className='user-img' src={next} alt='' />
         </div>
       </div>
 

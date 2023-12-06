@@ -2,11 +2,13 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
 import axios from 'axios';
-import { FaTrash, FaPencilAlt } from 'react-icons/fa';
+// import { FaTrash, FaPencilAlt } from 'react-icons/fa';
 import './Goals.css';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import SideBar from '../../components/SideBar/SideBar';
+  import Delete from'../Goals/delete.png';
+  import edit from '../Goals/edit.png';
+  import calendar from '../Goals/calendar.png'
 //importing libraries
 
 export default function Goals() {
@@ -243,32 +245,42 @@ const updateGoal = async (e) => {
   //Fetching the Goal Data
 
 
+  const Box = ({ goal, handleDeleteClick, handleUpdateClick }) => (
+    <div className="box" key={goal.id}>
+      <h2>{goal.name}</h2>
+      <ul>
+        <li>{goal.target}</li>
+        <div className='goal-img'>
+          <img src={Delete} alt='' onClick={() => handleDeleteClick(goal.id)} />
+          <img src={edit} alt='' onClick={() => handleUpdateClick(goal.id)} />
+        </div>
+        <span className='goals-li'>{goal.startDate}</span>&nbsp;&nbsp;<img src={calendar} alt='' />&nbsp;&nbsp;<span className='goals-li'>{goal.endDate}</span>
+      </ul>
+    </div>
+  );
+  
+  // Assuming this is a part of a larger component
   return (
     <div>
-      <SideBar />
-      <div className="Add-Goal-modal">
-        <Button variant="primary" onClick={handleShowModal}>
+      <div className='goal-title'>Goals</div>
+      <div className="Add-Goal">
+        <Button className="goal-button" variant="primary" onClick={handleShowModal}>
           Add Goal
         </Button>
       </div>
-
-      {goalData.map((goal) => (
-        <div key={goal.id} className="Goals-Box">
-          <div className="Goals-Box-Items">
-            <div className="Goals-Box-Items-Title-Amount">
-              <h1>{goal.id}</h1>
-              <h3>{goal.target}$ </h3>
-            </div>
-            <div className="Goals-Box-Items-Icons">
-              <FaPencilAlt onClick={() => handleUpdateClick(goal.id)} />
-              <FaTrash onClick={() => handleDeleteClick(goal.id)} />
-            </div>
-            <div className="Goals-Box-End-Date">
-              <h3>{goal.endDate}</h3>
-            </div>
-          </div>
-        </div>
-      ))}
+      <div className="goal-container">
+        <div className="goal-row">
+          {goalData.map((goal) => (
+            <Box
+              key={goal.id}
+              goal={goal}
+              handleDeleteClick={handleDeleteClick}
+              handleUpdateClick={handleUpdateClick}
+            />
+          ))}
+        
+      </div>
+    </div>
 
 <Modal show={showModal} onHide={handleCloseModal}>
   <Modal.Header closeButton>

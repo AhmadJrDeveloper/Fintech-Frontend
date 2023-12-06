@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Josefin+Slab:ital,wght@0,400;1,300&display=swap');
 .sidebar{
     background-color:#421C5F;
-    width: 250px;
+    width: fit-content;
     height: 740px;
     border-radius: 0 20px 20px 0;
     display: flex;
@@ -14,23 +14,23 @@
     text-decoration: none;
     color:white;
     display: flex;
-    padding: 10px;
+    padding: 30px;
     cursor: pointer;
     margin-left: 30px;
     font-size: 17px;
 }
-.sidebar a span {
+.sidebar a .dash {
     font-weight: bold;
     font-size: 40px;
     display: none;
-    transform: translateX(-650%);
+    transform: translateX(-680%);
 }
 .sidebar a .icon{
     transform: translateX(-40%);
     width: 39px;
 }
-.sidebar a:hover span,
-.sidebar a.selected span { 
+.sidebar a:hover .dash,
+.sidebar a.selected .dash { 
     display:flex;
 }
 h3 {
@@ -44,4 +44,15 @@ h3 {
 }
 .sidebar-logo{    
     margin-left: -30px;
+}
+@media only screen and (max-width: 1080px) {
+    .sidebar{
+        display: flex;
+        width: fit-content;
+        height: fit-content;
+    } 
+    .sidebar-logo{
+        margin-left: -40px;
+    }  
+    
 }

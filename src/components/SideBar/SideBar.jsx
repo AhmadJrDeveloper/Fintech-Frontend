@@ -27,7 +27,7 @@ const SideBar = () => {
           >
             <h3 className="dashboard">
             <img className="icon" src={iconD} alt="" />
-              <span>|</span>Dashboard
+              <span className='dash'>|</span><span className='sidebar-label'>Dashboard</span>
             </h3>
           </Link>
           <Link
@@ -37,7 +37,7 @@ const SideBar = () => {
           >
             <h3 className="transactions">
             <img className="icon" src={iconT} alt="" />
-              <span>|</span>Transactions
+              <span className='dash'>|</span><span className='sidebar-label'>Transactions</span>
             </h3>
           </Link>
           <Link
@@ -47,7 +47,7 @@ const SideBar = () => {
           >
             <h3 className="Goals">
             <img className="icon" src={iconG} alt="" />
-              <span>|</span>Goals
+              <span className='dash'>|</span><span className='sidebar-label'>Goals</span>
             </h3>
           </Link>
           <Link
@@ -57,7 +57,7 @@ const SideBar = () => {
           >
             <h3 className="Reports">
             <img className="icon" src={iconR} alt="" />
-              <span>|</span>Reports
+              <span className='dash'>|</span><span className='sidebar-label'>Reports</span>
             </h3>
           </Link>
           <Link
@@ -67,7 +67,7 @@ const SideBar = () => {
           >
             <h3 className="Users">
             <img className="icon" src={iconU} alt="" />
-              <span>|</span>Users
+              <span className='dash'>|</span> <span className='sidebar-label'>Users</span>
             </h3>
           </Link>
         </div>
