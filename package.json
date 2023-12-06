@@ -20,8 +20,8 @@
     "react-bootstrap": "^2.9.1",
     "react-chartjs-2": "^3.0.4",
     "react-dom": "^18.2.0",
-    "router-dom": "^2.2.11",
-    "safe-buffer": "^5.2.0"
+    "react-icons": "^4.12.0",
+    "router-dom": "^2.2.11"
   },
   "devDependencies": {
     "@types/react": "^18.2.37",

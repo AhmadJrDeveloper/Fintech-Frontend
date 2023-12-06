@@ -1,0 +1,134 @@
+@font-face {
+    font-family: 'Donegal One';
+    src: local('Donegal One'), url('/Donegal_One/DonegalOne-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Sofia Sans';
+    src: local('SofiaSans'), url('/Sofia_Sans/SofiaSansSemiCondensed-VariableFont_wght.ttf') format('truetype');
+}
+.Report-Header{
+    display: flex;
+    justify-content: center;
+}
+
+.Report-Header-Title{
+    font-family: 'Donegal One', sans-serif;
+    font-size: 19px;
+    margin-top: 30px;
+    height: 3px;
+}
+
+.Report-Header-SubTitle{
+    font-family: 'Sofia Sans', sans-serif;
+    font-size: 42px;
+    margin-top: 0;
+    font-weight: bold;
+
+}
+
+.Report-Header-Box{
+    display: flex;
+    flex-direction: column;
+    width: 295px;
+    height: 143px;
+    margin-left: 20px;
+    background-color: #D0BDE7;
+    align-items: center;
+    border-radius: 10px;
+}
+
+
+.date-input-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+  }
+
+  .Report-Date-Box{
+    font-family: 'Sofia Sans', sans-serif;
+    align-self: center;
+    background-color: #e3d3f8;
+    width: 200px;
+    height: 43px;
+    font-size: 21px;
+    border-radius: 10px;
+    border: none;
+    text-align: center;
+  }
+
+  .Report-Date-Box-Label{
+    font-family: 'Sofia Sans', sans-serif;
+    margin-left: 30px;
+    margin-right: 10px;
+    font-size: 20px;
+
+  }
+
+  .Report-Date-Box-Button {
+    font-family: 'Sofia Sans', sans-serif;
+    width: 150px;
+    height: 45px;
+    margin-left: 30px;
+    font-size: 25px;
+    border-radius: 10px;
+    background-color: #421C5F;
+    color: white;
+}
+
+.Report-Date-Box-Button:hover ,.Report-Date-Box:hover {
+    border: 2px solid #000; /* Change #000 to the color you desire */
+}
+
+.Report-Statstics{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    width: 100%;
+}
+
+.Report-Recent-Transactions{
+    margin-left: 100px;
+    background-color: #DABEF5;
+    width: 722px;
+    height: 538px;
+    border-radius: 23px;
+}
+
+.Report-Recent-Transactions-Header{
+    padding-left: 15px;
+    font-family: 'Sofia Sans', sans-serif;
+    font-weight: bold;
+    font-size: 25px;
+    height: 5px;
+}
+
+.Report-Recent-Transactions-SubHeader{
+    padding-left: 15px;
+    font-family: 'Sofia Sans', sans-serif;
+    font-size: 25px;
+}
+
+.Report-Recent-Transactions-Table{
+    font-family: 'Sofia Sans', sans-serif;
+    margin-left: 10px;
+    border-collapse: collapse;
+    border-radius: 30px;
+    width: 700px;
+    height: 60px;
+    text-align: center;
+    font-size: 30px;
+
+
+    
+}
+
+.Report-Recent-Transactions-Table-Header{
+    color: white;
+    background-color:#421C5F;
+    border-radius: 15px;
+}
+
+.Report-Chart{
+    width: 760px;
+}

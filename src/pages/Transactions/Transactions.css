@@ -1,33 +1,36 @@
 .button-container-transaction {
-  display: flex;
-  justify-content: center;
-  margin-top: 5%;
+  display: flex !important;
+  justify-content: center !important;
+  margin-top: 5% !important;
 }
+
 .button-container-transaction :first-child {
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
 }
 
 .button-container-transaction :last-child {
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
 }
+
 .button-transaction {
-  background-color: #d9d9d9;
-  height: 40px;
-  width: 6%;
+  background-color: #d9d9d9 !important;
+  height: 40px !important;
+  width: 6% !important;
 }
 
 button.selected-transaction {
-  background-color: #421c5f;
-  color: white;
-  width: 6%;
+  background-color: #421c5f !important;
+  color: white !important;
+  width: 6% !important;
 }
+
 .first-line-transaction {
-  display: flex;
-  margin-top: 40px;
-  margin-left: 70px;
-  gap: 3%;
+  display: flex !important;
+  margin-top: 40px !important;
+  margin-left: 70px !important;
+  gap: 3% !important;
 }
 
 .myBalecence-transaction {
@@ -36,10 +39,10 @@ button.selected-transaction {
     rgba(218, 190, 245, 0.78) 0%,
     rgba(178, 147, 216, 0.25) 71.98%,
     rgba(145, 182, 216, 0) 100%
-  );
-  border-radius: 25px;
-  width: 399.89px;
-  height: 119.77px;
+  ) !important;
+  border-radius: 25px !important;
+  width: 399.89px !important;
+  height: 119.77px !important;
 }
 
 .myBalence-txt-transaction,
@@ -48,20 +51,21 @@ button.selected-transaction {
 .myBalence-txt-value-transaction,
 .expenses-txt-value-transaction,
 .incomes-txt-value-transaction {
-  font-weight: 600;
-  font-size: 31px;
-  color: #561b54;
-  padding-left: 25px;
-  padding-top: 20px;
-  line-height: 0.25;
+  font-weight: 600 !important;
+  font-size: 31px !important;
+  color: #561b54 !important;
+  padding-left: 25px !important;
+  padding-top: 20px !important;
+  line-height: 0.25 !important;
 }
 
 .expenses-txt-value-transaction {
-  color: #ea4f1b;
+  color: #ea4f1b !important;
 }
+
 .incomes-transaction {
-  width: 409px;
-  height: 241px;
+  width: 409px !important;
+  height: 241px !important;
 
   background: linear-gradient(
     180deg,
@@ -70,13 +74,13 @@ button.selected-transaction {
     rgba(139, 214, 113, 0.322) 55.88%,
     rgba(145, 182, 216, 0) 90.25%,
     rgba(145, 182, 216, 0) 90.26%
-  );
-  border-radius: 25px;
+  ) !important;
+  border-radius: 25px !important;
 }
 
 .expenses-transaction {
-  width: 409px;
-  height: 241px;
+  width: 409px !important;
+  height: 241px !important;
 
   background: linear-gradient(
     180deg,
@@ -84,151 +88,157 @@ button.selected-transaction {
     rgba(215, 120, 120, 0.2806) 32.96%,
     rgba(241, 182, 186, 0.322) 55.88%,
     rgba(145, 182, 216, 0) 85.57%
-  );
-  border-radius: 25px;
+  ) !important;
+  border-radius: 25px !important;
 }
 
 .incomes-txt-value-transaction {
-  color: #2b4f22;
+  color: #2b4f22 !important;
 }
 
 .add-incomes-transaction,
 .add-expenses-transaction {
-  display: flex;
-  padding-left: 25px;
-  padding-top: 22px;
-  text-decoration: none;
-  color: rgb(8, 8, 8);
-  font-size: 22px;
+  display: flex !important;
+  padding-left: 25px !important;
+  padding-top: 22px !important;
+  text-decoration: none !important;
+  color: rgb(8, 8, 8) !important;
+  font-size: 22px !important;
 }
+
 .add-incomes-transaction img,
 .add-expenses-transaction img {
-  height: 46px;
-  width: 46px;
+  height: 46px !important;
+  width: 46px !important;
 }
 
 .add-incomes-transaction p,
 .add-expenses-transaction p {
-  color: black;
-  margin-left: 20px;
+  color: black !important;
+  margin-left: 20px !important;
 }
 
 .add-incomes-transaction p p,
 .add-expenses-transaction p p {
-  margin-left: 0px;
-  color: rgb(43, 42, 42);
-  font-size: 18px;
+  margin-left: 0px !important;
+  color: rgb(43, 42, 42) !important;
+  font-size: 18px !important;
 }
+
 .chart-container {
-  width: 400px;
-  height: 666px;
+  width: 400px !important;
+  height: 666px !important;
   background: linear-gradient(
     180deg,
     rgba(218, 190, 245, 0.46) 12.12%,
     rgba(178, 147, 216, 0.2806) 46.88%,
     rgba(145, 182, 216, 0) 110.19%
-  );
-  border-radius: 25px;
-  margin-left: 70px;
-  margin-top: -70px;
+  ) !important;
+  border-radius: 25px !important;
+  margin-left: 70px !important;
+  margin-top: -70px !important;
 }
 
-.chart-description{
-  padding-left: 20px;
-  padding-top: 20px;
-  width: 220px;
-  font-size: 18px
+.chart-description {
+  padding-left: 20px !important;
+  padding-top: 20px !important;
+  width: 220px !important;
+  font-size: 18px !important;
 }
+
 .first-line-chart-container {
-  display: flex;
-}
-.first-line-chart-container select{
-  height: 35px;
-  margin-top: 25px;
-  margin-left: 40px;
-  border-radius: 10px;
-  width: 120px;
-  color: #421C5F;
-  border-width: 0px;
-  background-color: white;
+  display: flex !important;
 }
 
-.second-line-transaction{
-  display: flex;
-  margin-left: 0px;
-  margin-top: 10px;
+.first-line-chart-container select {
+  height: 35px !important;
+  margin-top: 25px !important;
+  margin-left: 40px !important;
+  border-radius: 10px !important;
+  width: 120px !important;
+  color: #421C5F !important;
+  border-width: 0px !important;
+  background-color: white !important;
 }
-.Report-Recent-Transactions-SubHeader{
-  margin-top: 25px;
-}
-.transaction-table{
-  width: 890px;
-  margin-left: 50px;
-}
-.transaction-table-table{
-  width: 100%;
-  margin-left:0px;
 
+.second-line-transaction {
+  display: flex !important;
+  margin-left: 0px !important;
+  margin-top: 10px !important;
+}
 
+.Report-Recent-Transactions-SubHeader {
+  margin-top: 25px !important;
+}
+
+.transaction-table {
+  width: 890px !important;
+  margin-left: 50px !important;
+}
+
+.transaction-table-table {
+  width: 100% !important;
+  margin-left: 0px !important;
 }
 
 .pagination {
-  position: absolute; /* or 'absolute' depending on your layout */
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  padding-bottom: 0px;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 65% !important;
+  transform: translateX(-50%) !important;
+  padding-bottom: 0px !important;
+}
+
+.page-link {
+  background-color: #836599 !important;
+  color: white !important;
+}
+
+.active > .page-link {
+  background-color: #421C5F !important;
 }
 
 
-
-.page-link{
-  background-color: #836599;
-  color: white;
-
+.active > .page-link span {
+ display: none;
 }
-.active>.page-link
-{
-  background-color: #421C5F;
-  
-}
+
 .expense-income-form {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  background-color: #fff !important;
+  padding: 20px !important;
+  border-radius: 8px !important;
 }
 
-.expense-income-form input,.expense-income-form select {
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  
+.expense-income-form input,
+.expense-income-form select {
+  width: 100% !important;
+  margin-bottom: 10px !important;
+  padding: 8px !important;
+  border: 1px solid #ccc !important;
+  border-radius: 4px !important;
+  box-sizing: border-box !important;
 }
 
 .expense-income-form button {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  background-color: #421C5F;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 10px;
+  display: block !important;
+  width: 100% !important;
+  padding: 10px !important;
+  background-color: #421C5F !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  margin-top: 10px !important;
 }
 
 .expense-income-form button:hover {
-  background-color: #633785;
+  background-color: #633785 !important;
 }
+
 .expense-income-form .title {
-
-  margin-left: 40%;
-
+  margin-left: 40% !important;
 }

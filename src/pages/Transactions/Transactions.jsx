@@ -20,7 +20,7 @@ export default function Transactions() {
   const [categories, setCategories] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 7;
 
   const [categoriesIncome, setCategoriesIncome] = useState(1);
   const [amountIncome, setAmountIncome] = useState("");
@@ -403,11 +403,9 @@ export default function Transactions() {
         </div>
         <div className="Report-Recent-Transactions transaction-table">
           <p className="Report-Recent-Transactions-Header">
-            {" "}
             Recent transactions
           </p>
           <p className="Report-Recent-Transactions-SubHeader">
-            {" "}
             Check the last transactions in your account
           </p>
           <table className="Report-Recent-Transactions-Table transaction-table-table">
@@ -434,11 +432,12 @@ export default function Transactions() {
             </tbody>
           </table>
           <TransactionsPagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={handlePageChange}
-            className="pagination-transactions"
-          />
+  currentPage={currentPage}
+  totalPages={totalPages}
+  onPageChange={handlePageChange}
+  className="pagination-transactions" // Add your desired class name here
+/>
+
         </div>
       </div>
       {showForm && (
