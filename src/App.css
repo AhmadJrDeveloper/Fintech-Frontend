@@ -40,3 +40,15 @@
 .read-the-docs {
   color: #888;
 }
+@font-face {
+  font-family: 'Donegal One';
+  src: local('Donegal One'), url('/Donegal_One/DonegalOne-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Sofia Sans';
+  src: local('SofiaSans'), url('/Sofia_Sans/SofiaSansSemiCondensed-VariableFont_wght.ttf') format('truetype');
+}
+*{
+  font-family: 'Sofia Sans', sans-serif;
+
+}

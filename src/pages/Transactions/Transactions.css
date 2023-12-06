@@ -1,0 +1,236 @@
+.button-container-transaction {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+}
+.button-container-transaction :first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.button-container-transaction :last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.button-transaction {
+  background-color: #d9d9d9;
+  height: 40px;
+  width: 6%;
+}
+
+button.selected-transaction {
+  background-color: #421c5f;
+  color: white;
+  width: 6%;
+}
+.first-line-transaction {
+  display: flex;
+  margin-top: 40px;
+  margin-left: 70px;
+  gap: 3%;
+}
+
+.myBalecence-transaction {
+  background: linear-gradient(
+    180deg,
+    rgba(218, 190, 245, 0.78) 0%,
+    rgba(178, 147, 216, 0.25) 71.98%,
+    rgba(145, 182, 216, 0) 100%
+  );
+  border-radius: 25px;
+  width: 399.89px;
+  height: 119.77px;
+}
+
+.myBalence-txt-transaction,
+.incomes-txt-transaction,
+.expenses-txt-transaction,
+.myBalence-txt-value-transaction,
+.expenses-txt-value-transaction,
+.incomes-txt-value-transaction {
+  font-weight: 600;
+  font-size: 31px;
+  color: #561b54;
+  padding-left: 25px;
+  padding-top: 20px;
+  line-height: 0.25;
+}
+
+.expenses-txt-value-transaction {
+  color: #ea4f1b;
+}
+.incomes-transaction {
+  width: 409px;
+  height: 241px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(86, 174, 95, 0.46) 0%,
+    rgba(84, 184, 82, 0.2806) 31.4%,
+    rgba(139, 214, 113, 0.322) 55.88%,
+    rgba(145, 182, 216, 0) 90.25%,
+    rgba(145, 182, 216, 0) 90.26%
+  );
+  border-radius: 25px;
+}
+
+.expenses-transaction {
+  width: 409px;
+  height: 241px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255, 93, 93, 0.46) 6.92%,
+    rgba(215, 120, 120, 0.2806) 32.96%,
+    rgba(241, 182, 186, 0.322) 55.88%,
+    rgba(145, 182, 216, 0) 85.57%
+  );
+  border-radius: 25px;
+}
+
+.incomes-txt-value-transaction {
+  color: #2b4f22;
+}
+
+.add-incomes-transaction,
+.add-expenses-transaction {
+  display: flex;
+  padding-left: 25px;
+  padding-top: 22px;
+  text-decoration: none;
+  color: rgb(8, 8, 8);
+  font-size: 22px;
+}
+.add-incomes-transaction img,
+.add-expenses-transaction img {
+  height: 46px;
+  width: 46px;
+}
+
+.add-incomes-transaction p,
+.add-expenses-transaction p {
+  color: black;
+  margin-left: 20px;
+}
+
+.add-incomes-transaction p p,
+.add-expenses-transaction p p {
+  margin-left: 0px;
+  color: rgb(43, 42, 42);
+  font-size: 18px;
+}
+.chart-container {
+  width: 400px;
+  height: 666px;
+  background: linear-gradient(
+    180deg,
+    rgba(218, 190, 245, 0.46) 12.12%,
+    rgba(178, 147, 216, 0.2806) 46.88%,
+    rgba(145, 182, 216, 0) 110.19%
+  );
+  border-radius: 25px;
+  margin-left: 70px;
+  margin-top: -70px;
+}
+
+.chart-description{
+  padding-left: 20px;
+  padding-top: 20px;
+  width: 220px;
+  font-size: 18px
+}
+.first-line-chart-container {
+  display: flex;
+}
+.first-line-chart-container select{
+  height: 35px;
+  margin-top: 25px;
+  margin-left: 40px;
+  border-radius: 10px;
+  width: 120px;
+  color: #421C5F;
+  border-width: 0px;
+  background-color: white;
+}
+
+.second-line-transaction{
+  display: flex;
+  margin-left: 0px;
+  margin-top: 10px;
+}
+.Report-Recent-Transactions-SubHeader{
+  margin-top: 25px;
+}
+.transaction-table{
+  width: 890px;
+  margin-left: 50px;
+}
+.transaction-table-table{
+  width: 100%;
+  margin-left:0px;
+
+
+}
+
+.pagination {
+  position: absolute; /* or 'absolute' depending on your layout */
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-bottom: 0px;
+}
+
+
+.pagination span {
+
+}
+.page-link{
+  background-color: #836599;
+  color: white;
+
+}
+.active>.page-link
+{
+  background-color: #421C5F;
+  
+}
+.expense-income-form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.expense-income-form input,.expense-income-form select {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  
+}
+
+.expense-income-form button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #421C5F;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.expense-income-form button:hover {
+  background-color: #633785;
+}
+.expense-income-form .title {
+
+  margin-left: 40%;
+
+}
