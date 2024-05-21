@@ -10,6 +10,7 @@ import Modal from 'react-bootstrap/Modal';
 import Delete from '../Users/delete.png';
 import edit from '../Users/edit.png';
 import calendar from '../Goals/calendar.png'
+import GoalsPagination from '../Transactions/Paginagion';
 
 
 
@@ -21,6 +22,8 @@ export default function Goals() {
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [goalToDelete, setGoalToDelete] = useState(null);
   const [goalData, setGoalData] = useState([]);
+  const itemsPerPage = 6; 
+  const totalPages = Math.ceil(goalData.length / itemsPerPage);
   const [showModal, setShowModal] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showUpdateForm, setShowUpdateForm] = useState(false);
@@ -30,10 +33,28 @@ export default function Goals() {
   const [endDate, setEndDate] = useState('');
   const [type, setType] = useState('');
   const [goalToUpdate, setGoalToUpdate] = useState(null);
-  const { id: goalId } = useParams();
-  console.log(goalId)
+  const [currentPage, setCurrentPage] = useState(1);
+  const [refreshPage, setRefreshPage] = useState(false);
   //intializing useStates
 
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const paginatedGoals = goalData.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const isDuplicateGoalName = (nameToCheck, currentGoalId) => {
+    return goalData.some((goal) => goal.name === nameToCheck && goal.id !== currentGoalId);
+  };
+  
+
+  const dateChecker = (startDate, endDate) => {
+    if(startDate < endDate) 
+    return
+  }
   //posting goal
   const addGoal = async (e) => {
     e.preventDefault();
@@ -84,7 +105,15 @@ export default function Goals() {
         console.error('Error: Goal ID is not defined.');
         return;
       }
+      if (isDuplicateGoalName(name, goalToUpdate) && name !== goalToUpdate.name) {
+        alert('Duplicate goal name');
+        return;
+      }
 
+      if (startDate >= endDate) {
+        alert('End date should be greater than start date');
+        return;
+      }
       console.log('State Values:', { name, target, startDate, endDate, type });
 
       const authToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwMTU1ODAwOCwiZXhwIjoxNzA0MTUwMDA4fQ.sGRHYaRreOUSbAuyGHqBcZUcbt1Su1Ogxv6PooQ0tnc';
@@ -122,6 +151,7 @@ export default function Goals() {
         setEndDate('');
         setType('');
         handleCloseUpdateForm();
+        setRefreshPage(true);
       }
     } catch (error) {
       console.error(error);
@@ -224,7 +254,7 @@ export default function Goals() {
     };
 
     fetchData();
-  }, []);
+  }, [refreshPage]);
   //Fetching the Goal Data
   
   const Box = ({ goal,handleDeleteClick,handleUpdateClick}) => (
@@ -236,6 +266,12 @@ export default function Goals() {
         <img className='edit'src={edit} alt='' onClick={() => handleUpdateClick(goal.id)} /></div>
         <span className='goals-span'>{goal.startDate}</span>&nbsp;&nbsp;<img src={calendar} alt='' />&nbsp;&nbsp;<span className='goals-span'>{goal.endDate}</span>
       </ul>
+      <GoalsPagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+            className="pagination-transactions" // Add your desired class name here
+          />
     </div>
   );
 
@@ -248,7 +284,7 @@ export default function Goals() {
       </div>
       <div className="goal-container">
       <div className="goal-row">
-        {goalData.map((goal) =>(
+        {paginatedGoals.map((goal) =>(
         <Box
         key={goal.id}
           goal={goal}

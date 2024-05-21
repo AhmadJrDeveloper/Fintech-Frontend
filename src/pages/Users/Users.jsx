@@ -8,12 +8,15 @@ import next from '../Users/next.png';
 import edit from '../Users/edit.png';
 import Delete from '../Users/delete.png';
 import profile from '../Users/profile.png';
+import TransactionsPagination from '../Transactions/Paginagion';
 
 export default function Users() {
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [userToDelete, setUserToDelete] = useState(null);
   const [userToUpdate, setUserToUpdate] = useState(null);
   const [userData, setUserData] = useState([]);
+  const itemsPerPage = 5;
+  const totalPages = Math.ceil(userData.length / itemsPerPage);
   const [showModal, setShowModal] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showUpdateForm, setShowUpdateForm] = useState(false);
@@ -22,6 +25,19 @@ export default function Users() {
   const [email, setEmail] = useState('');
   const [role_id, setRoleId] = useState('');
   const [roles, setRoles] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [refreshPage, setRefreshPage] = useState(false);
+
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const paginatedUsers = userData.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+  
   
   const isDuplicateGoalName = (nameToCheck) => {
     return userData.some((user) => user.username === nameToCheck);
@@ -112,6 +128,7 @@ const updateUser = async (e) => {
       );
 
       handleCloseUpdateForm();
+      setRefreshPage(true);
     }
   } catch (error) {
     console.error(error);
@@ -204,7 +221,7 @@ const handleUpdateClick = async (userId) => {
     };
 
     fetchData();
-  }, []);
+  }, [refreshPage]);
 
 
 //posting goal
@@ -231,16 +248,15 @@ const addUser = async (e) => {
       );
   
       if (response.status === 200) {
-        // Assuming response.data contains the newly added goal
         setUserData((prevUsers) => [...prevUsers, response.data]);
         setUserName('');
         setEmail('');
         setPassword('');
         setRoleId('');
         handleShowSuccessModal();
-        fetchData();
-
-
+    
+        // Use setRefreshPage to trigger a refresh
+        setRefreshPage((prev) => !prev);
       }
     } catch (error) {
       console.error(error);
@@ -270,7 +286,7 @@ const addUser = async (e) => {
             </tr>
         </thead>
             <tbody className='user-table-body'>
-              {userData.map((user) => (
+              {paginatedUsers.map((user) => (
                 <tr key={user.id}>
                   <td className='user-table-body'>
                     <img className='user-img' src={profile} alt='' />
@@ -287,11 +303,14 @@ const addUser = async (e) => {
               ))}
             </tbody>
           </table>
+          <TransactionsPagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+          className="pagination-users" // Add your desired class name here
+        />
         </div>
-        <div className='user-skip'>
-          <img className='user-img' src={prev} alt='' /> &nbsp;1 of 5 &nbsp;
-          <img className='user-img' src={next} alt='' />
-        </div>
+        
       </div>
 
 
